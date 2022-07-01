@@ -1,0 +1,23 @@
+{
+  "name": "js_coding",
+  "version": "1.0.0",
+  "description": "手写前端基础面试题",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "throttle-test": "jest ./throttle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WarrenLee19/js_coding.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WarrenLee19/js_coding/issues"
+  },
+  "homepage": "https://github.com/WarrenLee19/js_coding#readme",
+  "dependencies": {
+    "jest": "^28.1.2"
+  }
+}

@@ -43,7 +43,7 @@ it("节流Throttle", (done) => {
   fn(1);
   fn(2);
 
-  setTimeout(() => {
+  setTimeout(() => {zheme
     const calls = mockFn.mock.calls;
 
     // 断言 mock方法只调用一次

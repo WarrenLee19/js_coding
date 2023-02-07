@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/WarrenLee19/js_coding#readme",
   "dependencies": {
-    "jest": "^28.1.2"
+    "jest": "^28.1.2",
+    "tapable": "^2.2.1"
   }
 }

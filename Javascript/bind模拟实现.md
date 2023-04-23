@@ -80,13 +80,38 @@ console.log(obj.friend);
 Function.prototype.new_bind = function (context) {
   var self = this
   var args = Array.prototype.slice(1,arguments)
+  var fnOP = function (){}
   var bindFunction = function (){
     var bind_args = Array.prototype.slice(arguments)
     return self.apply(this instanceof bindFunction ? this : context, args.concat(bind_args))
   }
   // 修改返回函数的 prototype 为绑定函数的 prototype，实例就可以继承绑定函数的原型中的值
   // 即例子中的bar.prototype.friend = 'kevin'，依然可以在obj.friend中取到
-  bindFunction.prototype = this.prototype
+  //用一个中间函数接收this.prototype
+  fnOP.prototype = this.prototype
+  bindFunction.prototype = new fnOP()
   return bindFunction
 }
+```
+当然，我们还需要考虑安全边界
+```js
+Function.prototype.new_bind = function (context) {
+  if (typeof this !== "function") {
+    throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
+  }
+  var self = this
+  var args = Array.prototype.slice(1,arguments)
+  var fnOP = function (){}
+  var bindFunction = function (){
+    var bind_args = Array.prototype.slice(arguments)
+    return self.apply(this instanceof fnOP ? this : context, args.concat(bind_args))
+  }
+  // 修改返回函数的 prototype 为绑定函数的 prototype，实例就可以继承绑定函数的原型中的值
+  // 即例子中的bar.prototype.friend = 'kevin'，依然可以在obj.friend中取到
+  //用一个中间函数接收this.prototype
+  fnOP.prototype = this.prototype
+  bindFunction.prototype = new fnOP()
+  return bindFunction
+}
+
 ```

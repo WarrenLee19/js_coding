@@ -100,7 +100,8 @@ Function.prototype.new_bind = function (context) {
     throw new Error("Function.prototype.bind - what is trying to be bound is not callable");
   }
   var self = this
-  var args = Array.prototype.slice(1,arguments)
+  var args = Array.prototype.slice.call(arguments,1)
+  
   var fnOP = function (){}
   var bindFunction = function (){
     var bind_args = Array.prototype.slice(arguments)

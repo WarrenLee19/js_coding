@@ -11,6 +11,19 @@ exports.throttle = (fn, delay) => {
     }
   };
 };
+// 使用setTimeout实现
+function Throttle(fn,delay){
+  let timer = null
+  return function (...args){
+    if(!timer){
+      const ret = fn.apply(this,args)
+      timer = setTimeout(()=>{
+        timer = null
+      },delay)
+      return ret
+    }
+  }
+}
 //防抖：2次触发间隔必须>限制间隔，小于限制间隔时，间隔刷新
 // 实现的话可以使用定时器执行函数，新调用发生时如果旧调用没有执行就清除之前的定时器
 exports.debounce = (fn, delay) => {
@@ -27,3 +40,6 @@ exports.debounce = (fn, delay) => {
     }, delay);
   };
 };
+
+
+

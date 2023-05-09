@@ -35,6 +35,18 @@ function partition(a, lo, hi){
   return j;
 }
 
+//  function quickSort(a){
+//     sort(a, 0, a.length - 1);
+// }
+
+function sort(a, lo, hi){
+  if(hi <= lo){
+    return a;
+  }
+  let j = partition(a,lo, hi);
+  sort(a, lo, j-1);
+  sort(a, j+1, hi)
+}
 
 const quickSort = (array) => {
   const sort = (arr, left = 0, right = arr.length - 1) => {

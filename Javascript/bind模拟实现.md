@@ -104,7 +104,7 @@ Function.prototype.new_bind = function (context) {
   
   var fnOP = function (){}
   var bindFunction = function (){
-    var bind_args = Array.prototype.slice(arguments)
+    var bind_args = Array.prototype.slice.call(arguments)
     return self.apply(this instanceof fnOP ? this : context, args.concat(bind_args))
   }
   // 修改返回函数的 prototype 为绑定函数的 prototype，实例就可以继承绑定函数的原型中的值

@@ -1,7 +1,7 @@
 ### 梳理
 1. 初始化计算属性时，遍历computed对象，给其中每一个计算属性分别生成唯一computed watcher，并将该watcher中的dirty设置为true
 
-初始化时，计算属性并不会立即计算（vue做的优化之一），只有当获取的计算属性值才会进行对应计算
+2. 初始化时，计算属性并不会立即计算（vue做的优化之一），只有当获取的计算属性值才会进行对应计算
 3. 初始化计算属性时，将Dep.target设置成当前的computed watcher，将computed watcher添加到所依赖data值对应的dep中（依赖收集的过程），然后计算computed对应的值，后将dirty改成false
 4. 当所依赖data中的值发生变化时，调用set方法触发dep的notify方法，将computed watcher中的dirty设置为true
 5. 下次获取计算属性值时，若dirty为true, 重新计算属性的值

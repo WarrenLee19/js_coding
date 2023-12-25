@@ -244,7 +244,7 @@ export const AdvancedSearch = (props: OptionalExpect<AdvancedSearchProps, 'items
         }
 
     };
-    const onFinish = (values: any) => {
+    const onFinish = (valu·es: any) => {
         if(onChange){
             onChange(values)
         }

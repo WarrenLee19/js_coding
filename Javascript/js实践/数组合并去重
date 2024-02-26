@@ -1,0 +1,23 @@
+### 数组合并去重，即取并集
+
+```
+/**
+  过滤重复的数组
+ * @param  arr 过滤数组
+ * @param  filterItem 被过滤字段
+ */
+
+export function mergeArray(arr, filterItem) {
+  let obj = {}; // obj用来记录该项重复出现了几次
+  let resultArr = []; // 去重后的数组
+  arr.forEach((item) => {
+      if (obj[item[filterItem]] === undefined) {
+      obj[item[filterItem]] = 1;
+      resultArr.push(item);
+      } else {
+          obj[item[filterItem]] += 1;
+      }
+  });
+  return resultArr;
+}
+```

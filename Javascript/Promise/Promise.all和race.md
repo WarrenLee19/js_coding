@@ -1,3 +1,4 @@
+首先，先说总结，`Promise.race` 注的是速度最快的 Promise 的结果，而 `Promise.all` 关注的是所有 Promise 是否都成功完成。
 ## all
 * 接收一个Promise数组，数组中如有非Promise项，则此项当做成功
 * 如果所有Promise都成功，则返回成功结果数组
